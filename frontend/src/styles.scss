@@ -1,0 +1,134 @@
+// Angular Material custom theme
+@use '@angular/material' as mat;
+
+// Define the app palette
+$primary-palette: mat.define-palette(mat.$indigo-palette, 600);
+$accent-palette: mat.define-palette(mat.$amber-palette, A200);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+  typography: mat.define-typography-config(
+    $font-family: 'Inter, sans-serif',
+  ),
+  density: 0,
+));
+
+@include mat.all-component-themes($app-theme);
+
+// ── Global resets & helpers ───────────────────────────────────────────────────
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f5f5;
+  color: #1a1a2e;
+}
+
+// Layout utilities
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-gap-16 {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+// Cards
+.content-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+// Typography helpers
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1a1a2e;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.text-muted {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+// Status chips
+.chip-success { background: #d1fae5; color: #065f46; border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; }
+.chip-warning { background: #fef3c7; color: #92400e; border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; }
+.chip-error   { background: #fee2e2; color: #991b1b; border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; }
+.chip-info    { background: #dbeafe; color: #1e40af; border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; }
+
+// Scrollbar styling
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+// Full-height layout helpers
+.full-height { height: 100%; }
+.fill-remaining { flex: 1; overflow: auto; }
+
+// Loading overlay
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+// ── Snackbar notification themes ─────────────────────────────────────────────
+.snack-success .mdc-snackbar__surface {
+  background: #065f46 !important;
+  color: #d1fae5 !important;
+}
+.snack-error .mdc-snackbar__surface {
+  background: #991b1b !important;
+  color: #fee2e2 !important;
+}
+.snack-warning .mdc-snackbar__surface {
+  background: #92400e !important;
+  color: #fef3c7 !important;
+}
+.snack-info .mdc-snackbar__surface {
+  background: #1e40af !important;
+  color: #dbeafe !important;
+}
